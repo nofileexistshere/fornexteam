@@ -15,8 +15,8 @@ RUN apk add --no-cache \
     libzip-dev \
     oniguruma-dev \
     icu-dev \
+    icu-data-full \
     linux-headers \
-    libxml2-dev \
     fontconfig \
     ttf-dejavu
 
@@ -31,10 +31,7 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         gd \
         intl \
         pcntl \
-        exif \
-        dom \
-        xml \
-        xmlwriter
+        exif
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
