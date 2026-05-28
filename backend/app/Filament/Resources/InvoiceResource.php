@@ -146,14 +146,15 @@ class InvoiceResource extends Resource
                 Tables\Columns\TextColumn::make('total')
                     ->money('IDR')
                     ->sortable(),
-                Tables\Columns\BadgeColumn::make('status')
-                    ->colors([
-                        'secondary' => 'draft',
-                        'info' => 'sent',
-                        'success' => 'paid',
-                        'danger' => 'overdue',
-                        'warning' => 'cancelled',
-                    ])
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        'sent'      => 'info',
+                        'paid'      => 'success',
+                        'overdue'   => 'danger',
+                        'cancelled' => 'warning',
+                        default     => 'secondary',
+                    })
                     ->sortable(),
                 Tables\Columns\TextColumn::make('issue_date')
                     ->date()
