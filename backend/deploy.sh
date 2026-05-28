@@ -15,6 +15,9 @@ php artisan optimize:clear
 echo "==> Creating storage symlink..."
 php artisan storage:link || true
 
+echo "==> Publishing Livewire assets..."
+php artisan livewire:publish --assets
+
 echo "==> Caching for production..."
 php artisan config:cache
 php artisan route:cache
