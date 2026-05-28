@@ -72,6 +72,7 @@ jobs:
           envs: BACKEND_ENV
           script: |
             set -e
+            export PATH=$PATH:/usr/local/bin:/usr/bin
 
             echo "==> Creating Docker network..."
             docker network create nexteam 2>/dev/null || true
