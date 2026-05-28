@@ -78,8 +78,18 @@ jobs:
             docker network create nexteam 2>/dev/null || true
 
             echo "==> Writing backend .env..."
-            mkdir -p /opt/nexteam/backend/storage /opt/nexteam/backend/database
+            mkdir -p /opt/nexteam/backend/database
             printenv BACKEND_ENV > /opt/nexteam/backend/.env
+
+            echo "==> Preparing asset folders..."
+            mkdir -p /volume1/homes/wiki/fornexteam/blog-images
+            mkdir -p /volume1/homes/wiki/fornexteam/projects
+            mkdir -p /volume1/homes/wiki/fornexteam/services
+            mkdir -p /volume1/homes/wiki/fornexteam/clients
+            mkdir -p /volume1/homes/wiki/fornexteam/hero
+            mkdir -p /volume1/homes/wiki/fornexteam/pages
+            mkdir -p /volume1/homes/wiki/fornexteam/team
+            mkdir -p /volume1/homes/wiki/fornexteam/media
 
             echo "==> Deploying frontend..."
             docker stop fornexteam-frontend 2>/dev/null || true
@@ -104,7 +114,7 @@ jobs:
               --restart unless-stopped \
               -p 5050:80 \
               --env-file /opt/nexteam/backend/.env \
-              -v /opt/nexteam/backend/storage:/var/www/html/storage/app \
+              -v /volume1/homes/wiki/fornexteam:/var/www/html/storage/app/public \
               -v /opt/nexteam/backend/database:/var/www/html/database \
               wikiarlnm/fornexteam-backend-app:latest
 
