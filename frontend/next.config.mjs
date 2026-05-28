@@ -9,13 +9,13 @@ const nextConfig = {
         protocol: "http",
         hostname: "localhost",
         port: "8000",
-        pathname: "/storage/**",
+        pathname: "/**",
       },
       {
-        protocol: "http",
+        protocol: "https",
         hostname: "localhost",
         port: "8000",
-        pathname: "/hero/**",
+        pathname: "/**",
       },
 
       // Production API server
