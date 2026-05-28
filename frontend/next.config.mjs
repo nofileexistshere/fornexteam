@@ -21,12 +21,12 @@ const nextConfig = {
       // Production API server
       {
         protocol: "https",
-        hostname: "server.nofileexistshere.my.id",
+        hostname: "board.fornexteam.com",
         pathname: "/storage/**",
       },
       {
         protocol: "https",
-        hostname: "server.nofileexistshere.my.id",
+        hostname: "board.fornexteam.com",
         pathname: "/hero/**",
       },
     ],
