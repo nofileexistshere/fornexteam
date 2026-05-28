@@ -7,7 +7,7 @@ const getBaseURL = () => {
   }
 
   // Server-side (SSR / standalone)
-  return process.env.NEXT_PUBLIC_API_URL || "https://board.fornexteam.com";
+  return process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 };
 
 const apiClient = axios.create({
