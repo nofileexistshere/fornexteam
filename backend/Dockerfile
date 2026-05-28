@@ -15,10 +15,7 @@ RUN apk add --no-cache \
     libzip-dev \
     oniguruma-dev \
     icu-dev \
-    icu-data-full \
-    linux-headers \
-    fontconfig \
-    ttf-dejavu
+    linux-headers
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \

@@ -1,10 +1,13 @@
 import axios from "axios";
 
 const getBaseURL = () => {
-  return (
-    process.env.NEXT_PUBLIC_API_URL ||
-    (typeof window === "undefined" ? "http://localhost:8000" : "https://board.fornexteam.com")
-  );
+  // Client-side (browser)
+  if (typeof window !== "undefined") {
+    return process.env.NEXT_PUBLIC_API_URL;
+  }
+
+  // Server-side (SSR / standalone)
+  return process.env.NEXT_PUBLIC_API_URL || "https://board.fornexteam.com";
 };
 
 const apiClient = axios.create({
