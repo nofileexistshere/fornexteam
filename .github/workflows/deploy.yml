@@ -90,7 +90,7 @@ jobs:
               --name fornexteam-frontend \
               --network nexteam \
               --restart unless-stopped \
-              -p 7001:80 \
+              -p 5056:80 \
               wikiarlnm/fornexteam-frontend-app:latest
 
             echo "==> Deploying backend..."
@@ -102,7 +102,7 @@ jobs:
               --name fornexteam-backend \
               --network nexteam \
               --restart unless-stopped \
-              -p 7002:80 \
+              -p 5050:80 \
               --env-file /opt/nexteam/backend/.env \
               -v /opt/nexteam/backend/storage:/var/www/html/storage/app \
               -v /opt/nexteam/backend/database:/var/www/html/database \
