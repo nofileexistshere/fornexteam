@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
         // Jika ingin setting khusus saat local bisa ditaruh di sini
         if (config('app.env') === 'local') {
             // Contoh: paksa HTTPS di local (opsional)
-            $this->app['request']->server->set('HTTP', true);
+            $this->app['request']->server->set('HTTPS', true);
         }
     }
 
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
     {
         // Paksa Laravel generate URL dengan HTTPS jika bukan local environment
         if (config('app.env') !== 'local') {
-            URL::forceScheme('http');
+            URL::forceScheme('https');
         }
     }
 }
