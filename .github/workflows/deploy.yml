@@ -27,6 +27,8 @@ jobs:
           context: ./frontend
           push: true
           tags: wikiarlnm/fornexteam-frontend-app:latest
+          build-args: |
+            NEXT_PUBLIC_API_URL=https://board.fornexteam.com
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
@@ -90,6 +92,7 @@ jobs:
             mkdir -p /volume1/homes/wiki/fornexteam/pages
             mkdir -p /volume1/homes/wiki/fornexteam/team
             mkdir -p /volume1/homes/wiki/fornexteam/media
+            chmod -R 777 /volume1/homes/wiki/fornexteam
 
             echo "==> Deploying frontend..."
             docker stop fornexteam-frontend 2>/dev/null || true

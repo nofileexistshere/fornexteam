@@ -15,6 +15,12 @@ php artisan optimize:clear
 echo "==> Creating storage symlink..."
 php artisan storage:link || true
 
+echo "==> Fixing storage permissions..."
+chmod -R 775 /var/www/html/storage
+chmod -R 775 /var/www/html/storage/app/public
+chown -R www-data:www-data /var/www/html/storage
+chown -R www-data:www-data /var/www/html/bootstrap/cache
+
 echo "==> Publishing Livewire assets..."
 php artisan livewire:publish --assets
 
