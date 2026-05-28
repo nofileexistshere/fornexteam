@@ -41,10 +41,18 @@ COPY . .
 # Install PHP dependencies (production)
 RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress
 
+# Create all required storage directories
+RUN mkdir -p /var/www/html/storage/app/livewire-tmp \
+    && mkdir -p /var/www/html/storage/app/public \
+    && mkdir -p /var/www/html/storage/framework/cache/data \
+    && mkdir -p /var/www/html/storage/framework/sessions \
+    && mkdir -p /var/www/html/storage/framework/views \
+    && mkdir -p /var/www/html/storage/logs
+
 # Permissions
 RUN chown -R www-data:www-data /var/www/html \
-    && chmod -R 755 /var/www/html/storage \
-    && chmod -R 755 /var/www/html/bootstrap/cache
+    && chmod -R 777 /var/www/html/storage \
+    && chmod -R 775 /var/www/html/bootstrap/cache
 
 # PHP config
 COPY docker/php.ini /usr/local/etc/php/conf.d/app.ini

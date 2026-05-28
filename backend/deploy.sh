@@ -16,9 +16,15 @@ echo "==> Creating storage symlink..."
 php artisan storage:link || true
 
 echo "==> Fixing storage permissions..."
-chmod -R 775 /var/www/html/storage
-chmod -R 775 /var/www/html/storage/app/public
-chown -R www-data:www-data /var/www/html/storage
+mkdir -p /var/www/html/storage/app/livewire-tmp
+mkdir -p /var/www/html/storage/app/public
+mkdir -p /var/www/html/storage/framework/cache/data
+mkdir -p /var/www/html/storage/framework/sessions
+mkdir -p /var/www/html/storage/framework/views
+mkdir -p /var/www/html/storage/logs
+chmod -R 777 /var/www/html/storage
+chmod -R 775 /var/www/html/bootstrap/cache
+chown -R www-data:www-data /var/www/html/storage 2>/dev/null || true
 chown -R www-data:www-data /var/www/html/bootstrap/cache
 
 echo "==> Publishing Livewire assets..."
