@@ -3,12 +3,12 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# NEXT_PUBLIC_* vars must be available at build time
-ARG NEXT_PUBLIC_API_URL
-ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
-
 COPY package*.json ./
 RUN npm ci
+
+# NEXT_PUBLIC_* vars baked in at build time — declare after npm ci to preserve cache
+ARG NEXT_PUBLIC_API_URL=https://board.fornexteam.com
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 COPY . .
 RUN npm run build

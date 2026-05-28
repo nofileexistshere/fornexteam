@@ -1,12 +1,6 @@
 import axios from "axios";
 
 const getBaseURL = () => {
-  // Client-side (browser)
-  if (typeof window !== "undefined") {
-    return process.env.NEXT_PUBLIC_API_URL;
-  }
-
-  // Server-side (SSR / standalone)
   return process.env.NEXT_PUBLIC_API_URL || "https://board.fornexteam.com";
 };
 
