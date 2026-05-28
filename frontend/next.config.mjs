@@ -22,12 +22,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "board.fornexteam.com",
-        pathname: "/storage/**",
-      },
-      {
-        protocol: "https",
-        hostname: "board.fornexteam.com",
-        pathname: "/hero/**",
+        pathname: "/**",
       },
     ],
   },
