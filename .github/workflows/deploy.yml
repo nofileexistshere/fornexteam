@@ -29,6 +29,7 @@ jobs:
           tags: wikiarlnm/fornexteam-frontend-app:latest
           build-args: |
             NEXT_PUBLIC_API_URL=https://board.fornexteam.com
+            NEXT_PUBLIC_SITE_URL=https://www.fornexteam.com
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
