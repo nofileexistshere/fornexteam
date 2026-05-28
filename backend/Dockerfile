@@ -67,7 +67,9 @@ COPY docker/supervisord.conf /etc/supervisord.conf
 COPY deploy.sh /deploy.sh
 RUN chmod +x /deploy.sh
 
-RUN mkdir -p /var/log/supervisor /run/nginx
+RUN mkdir -p /var/log/supervisor /run/nginx \
+    && mkdir -p /tmp/nginx_client_body /tmp/nginx_proxy /tmp/nginx_fastcgi \
+    && chmod -R 777 /tmp/nginx_client_body /tmp/nginx_proxy /tmp/nginx_fastcgi
 
 EXPOSE 80
 
